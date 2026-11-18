@@ -1,0 +1,18 @@
+{
+  "name": "minha-terapia-alimentar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Minha Terapia Alimentar — prontuário e acompanhamento alimentar (acesso restrito por convite)",
+  "scripts": {
+    "start": "bun src/server/index.ts",
+    "dev": "bun --watch src/server/index.ts",
+    "migrate": "bun scripts/migrate.ts",
+    "master:ativar": "bun scripts/create-master.ts",
+    "demo:seed": "bun scripts/seed-demo.ts",
+    "demo:remover": "bun scripts/remove-demo.ts",
+    "test": "bun test tests/logic.test.ts && bash db-tests/run.sh && bash scripts/test-http.sh"
+  },
+  "dependencies": { "pdf-lib": "^1.17.1" },
+  "engines": { "bun": ">=1.2" }
+}

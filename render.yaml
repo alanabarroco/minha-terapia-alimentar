@@ -1,0 +1,16 @@
+# Blueprint do Render (plano gratuito). DATABASE_URL e APP_URL são preenchidos por você no painel.
+services:
+  - type: web
+    name: minha-terapia-alimentar
+    runtime: docker
+    plan: free
+    healthCheckPath: /saude
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: "1"
+      - key: DATABASE_URL
+        sync: false
+      - key: APP_URL
+        sync: false

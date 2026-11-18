@@ -1,0 +1,14 @@
+# Exemplo para servidor próprio. Troque as senhas por valores secretos (arquivo .env).
+services:
+  db:
+    image: postgres:16
+    environment: { POSTGRES_PASSWORD: "${DB_ADMIN_PASSWORD}", POSTGRES_DB: mta }
+    volumes: [dbdata:/var/lib/postgresql/data]
+  app:
+    build: .
+    env_file: .env
+    environment: { DATABASE_URL: "postgres://postgres:${DB_ADMIN_PASSWORD}@db:5432/mta" }
+    depends_on: [db]
+    ports: ["3000:3000"]
+    volumes: [files:/data]
+volumes: { dbdata: {}, files: {} }
